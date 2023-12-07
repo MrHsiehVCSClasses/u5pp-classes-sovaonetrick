@@ -121,8 +121,218 @@ void changeNumSides(int num)
 
 class Card
 {
-  
+  private String value = "2";
+  private String suit = "clubs";
+
+  String jack = "jack";
+  String queen = "queen";
+  String king = "king";
+  String ace = "ace";
+
+  String clubs = "clubs";
+  String diamonds = "diamonds";
+  String spades = "spades";
+  String hearts = "hearts";
+
+  Card()
+  {
+    value = this.value;
+    suit = this.suit;
+  }
+
+  Card(String suit)
+  {
+    String banana = suit.toLowerCase();
+    if (banana == clubs || banana == diamonds || banana == spades || banana == hearts)
+    {
+      this.suit = suit;
+    }
+
+    value = this.value;
+  }
+
+  Card(String suit, String value)
+  {
+    String banana = suit.toLowerCase();
+    if (banana == clubs || banana == diamonds || banana == spades || banana == hearts)
+    {
+      this.suit = suit;
+    }
+    else
+    {
+      suit = this.suit;
+    }
+
+    String potato = value.toLowerCase();
+    if (potato == king || potato == queen || potato == ace || potato == jack)
+    {
+      this.value = value;
+    }
+    else
+    {
+      if (Integer.parseInt(value) >= 2 && Integer.parseInt(value) <= 10)
+      {
+        this.value = value;
+      }
+      else
+      {
+        value = this.value;
+      }
+    }
+  }
+
+  public String getValue()
+  {
+    return this.value;
+  }
+
+  public String getSuit()
+  {
+    return this.suit;
+  }
+
+  public String toString()
+  {
+    return "The " + this.value + " of " + this.suit;
+  }
+
+  public boolean equals(Card c)
+  {
+    if (this.value == c.value && this.suit == c.suit)
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  }
+
+  public void changeSuit(String suit)
+  {
+    String pickles = suit.toLowerCase();
+    if (pickles == hearts || pickles == clubs || pickles == diamonds || pickles == spades)
+    {
+      this.suit = suit.toLowerCase();
+    }
+  }
+  public void changeValue(String value)
+  {
+    String banda = value.toLowerCase();
+    if (banda == jack || banda == queen || banda == ace || banda == king)
+    {
+      this.value = value.toLowerCase();
+    }
+    else
+    {
+      if (Integer.parseInt(value) >= 2 && Integer.parseInt(value) <= 10)
+      {
+        this.value = value;
+      }
+    }
+  }
 }
+
+class MyMath
+{
+  public static int abs(int x)
+  {
+    if (x < 0)
+    {
+      x *= -1;
+    }
+    return x;
+  }
+
+  public static double abs(double x)
+  {
+    if (x < 0)
+    {
+      x *= -1.0;
+    }
+    return x;
+  }
+
+  public static double pow(double base, int exponent)
+  {
+    double answer = 1.0;
+
+    for (int i = 0; i < exponent; i++)
+    {
+      answer *= base;
+    }
+
+    return answer;
+  }
+
+  public static int perfectSqrt(int x)
+  {
+    if (x < 0) {
+      return -1;
+    }
+
+    for (int i = 0; i * i <= x; i++)
+    {
+      if (i * i == x)
+      {
+        return i;
+      }
+    }
+
+    return -1;
+  }
+}
+
+class InputHelper {
+
+  private Scanner scanner;
+
+  public InputHelper(Scanner scanner) {
+    this.scanner = scanner;
+  }
+
+  public boolean getYesNoInput(String prompt) {
+    while (true) {
+      System.out.print(prompt + " (yes/no): ");
+      String input = scanner.next().toLowerCase();
+
+      if (input.startsWith("y")) {
+        return true;
+      }
+      else if (input.startsWith("n"))
+      {
+        return false;
+      }
+      else
+      {
+        System.out.println("HE CANCELLLED HE CANCELLEDDD AYAYA HE CANCELLED");
+      }
+    }
+  }
+
+  public int getIntegerInput(String prompt, int min, int max)
+  {
+
+    while (true) {
+      System.out.print(prompt + " enter an integer between " + min + " and " + max);
+      while (!scanner.hasNextInt()){
+        System.out.println("Invalid input. RIOOOOOT");
+        scanner.next();
+      }
+
+      int input = scanner.nextInt();
+
+      if (input >= min && input <= max) {
+        return input;
+      }
+      else {
+        System.out.println("my glorious king T1 faker playmaker");
+      }
+    }
+
+}
+}
+
 
 class Main {
   public static void main(String[] args) {
